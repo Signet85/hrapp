@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../lib/firebase';
@@ -18,12 +19,18 @@ export default function LoginPage() {
       await signInWithEmailAndPassword(auth, email, password);
       router.push('/'); // Нэвтэрсний дараа нүүр хуудас руу үсрэх
     } catch (err: unknown) {
+      setEmail('');
+      setPassword('');
+      // Алдаа гарсан тохиолдолд алдааг тохируулах
+
       if (err instanceof Error) {
         setError(err.message);
         console.error("Error logging in:", err);
+        router.push('/login'); // Алдаа гарсан тохиолдолд login хуудсанд буцаах
       } else {
         setError('An unknown error occurred.');
         console.error("Error logging in:", err);
+        router.push('/login'); // Алдаа гарсан тохиолдолд login хуудсанд буцаах
       }
     }
   };
@@ -52,7 +59,7 @@ export default function LoginPage() {
             required
           />
         </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && <p style={{ color: 'red' }}>Хэрэглэгч байхгүй байна {error}</p>}
         <button type="submit">Login</button>
       </form>
       <GoogleSignInButton />

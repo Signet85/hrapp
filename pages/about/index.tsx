@@ -4,7 +4,7 @@ export default function AboutPage() {
         <h1>About Us</h1>
         <p>This is the about page of our Next.js application.</p>
         <p>We are using Firebase for authentication and hosting.</p>
-        <p>Feel free to explore our application!</p>
+        <p>Feel free to explore our application! gogog</p>
         </div>
     );
     }
