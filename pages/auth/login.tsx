@@ -1,10 +1,10 @@
 "use client";
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../lib/firebase';
+import { auth } from '../../lib/firebase';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import GoogleSignInButton from '../components/GoogleSignInButton';
+import GoogleSignInButton from '../../components/GoogleSignInButton';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -26,11 +26,11 @@ export default function LoginPage() {
       if (err instanceof Error) {
         setError(err.message);
         console.error("Error logging in:", err);
-        router.push('/login'); // Алдаа гарсан тохиолдолд login хуудсанд буцаах
+        router.push('/auth/login'); // Алдаа гарсан тохиолдолд login хуудсанд буцаах
       } else {
         setError('An unknown error occurred.');
         console.error("Error logging in:", err);
-        router.push('/login'); // Алдаа гарсан тохиолдолд login хуудсанд буцаах
+        router.push('/auth/login'); // Алдаа гарсан тохиолдолд login хуудсанд буцаах
       }
     }
   };
@@ -41,7 +41,8 @@ export default function LoginPage() {
       <form onSubmit={handleLogin}>
         <div>
           <label htmlFor="email">Email:</label>
-          <input
+          <input className="border border-gray-300 rounded p-2"
+            placeholder="Enter your email"
             type="email"
             id="email"
             value={email}
@@ -51,7 +52,8 @@ export default function LoginPage() {
         </div>
         <div>
           <label htmlFor="password">Password:</label>
-          <input
+          <input className = "border border-gray-300 rounded p-2"
+            placeholder="Enter your password"
             type="password"
             id="password"
             value={password}
@@ -64,7 +66,7 @@ export default function LoginPage() {
       </form>
       <GoogleSignInButton />
       <p>
-        Don`t have an account? <Link href="/signup">Sign up</Link>
+        Don`t have an account? <Link href="/auth/signup">Sign up</Link>
       </p>
     <hr />
       

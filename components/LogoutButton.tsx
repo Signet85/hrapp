@@ -8,7 +8,7 @@ const LogoutButton = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      router.push('/login'); // Гарсны дараа нэвтрэх хуудас руу үсрэх
+      router.push('/auth/login'); // Гарсны дараа нэвтрэх хуудас руу үсрэх
     } catch (error) {
       console.error("Error signing out: ", error);
     }

@@ -11,8 +11,10 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>Welcome to the App!</h1>
-      <Link href="/about">About</Link>
+      <h1 className="text-3xl font-bold underline text-cyan-500">
+      Hello world!
+      </h1>
+      <Link href="/about" className="text-2xl font-bold underline text-amber-400 " >About</Link>
       {user ? (
         <div>
           <p>Hello, {user.email || user.displayName}!</p>
@@ -22,7 +24,7 @@ export default function HomePage() {
       ) : (
         <div>
           <p>You are not logged in.</p>
-          <Link href="/login">Login</Link> | <Link href="/signup">Sign Up</Link>
+          <Link className="underline" href="/auth/login">Login</Link> | <Link className="underline" href="/auth/signup">Sign Up</Link>
         </div>
       )}
     </div>
